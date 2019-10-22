@@ -35,7 +35,7 @@ async function loadPoemmsCollection() {
         useNewUrlParser: true,
         useUnifiedTopology: true
     });
-    return client.db('demo').collection('poems')
+    return client.db('demo').collection('poems');
 };
 
 
