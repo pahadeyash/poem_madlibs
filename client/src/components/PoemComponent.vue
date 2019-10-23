@@ -1,8 +1,8 @@
 <template>
     <div class="post">
         {{ poemObj.createdAt.getMonth() + '/' + poemObj.createdAt.getDate()  + '/' + poemObj.createdAt.getFullYear()}}
-        <p class="text">{{ poemObj.text }}</p>
-        <button v-on:click="deletePoem"> Delete </button>
+        <p class="text">{{ poemObj.poem }}</p>
+        <b-button variant="success" v-on:click="deletePoem"> Delete </b-button>
     </div>
 </template>
 
@@ -13,7 +13,6 @@ export default {
     name: 'PoemComponent',
     props: {
         poemObj: Object,
-        key: String
     },
     methods: {
       async deletePoem(){
@@ -29,8 +28,6 @@ export default {
 
 div.post { 
   position: relative; 
-  border: 1px solid #5bd658; 
-  background-color: #bcffb8; 
   padding: 10px 10px 30px 10px; 
   margin-bottom: 15px; 
 }
@@ -40,7 +37,6 @@ div.created-at {
   top: 0; 
   left: 0; 
   padding: 5px 15px 5px 15px; 
-  background-color: darkgreen; 
 }
 
 p.text { 

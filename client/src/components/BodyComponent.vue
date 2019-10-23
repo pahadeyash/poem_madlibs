@@ -1,5 +1,9 @@
 <template>
   <div class="container">
+    <h1> Fill In! </h1>
+    <FormComponent />
+    <br>
+    <br>
     <h1> All Poems </h1>
     <hr>
     <p class="error" v-if="error"> {{error}} </p>
@@ -19,11 +23,13 @@
 <script>
 import PoemService from '../PoemService'
 import PoemComponent from './PoemComponent.vue'
+import FormComponent from './FormComponent.vue'
 
 export default {
   name: 'BodyComponent',
   components: {
-    PoemComponent
+    PoemComponent,
+    FormComponent
   },
   data() {
     return {
@@ -57,6 +63,10 @@ export default {
 div.container {
   max-width: 800px; 
   margin: 0 auto; 
+}
+
+label{
+  margin-right: 1em;
 }
 
 </style>
