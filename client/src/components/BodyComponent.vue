@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <h1> Fill In! </h1>
+    <h1> Madlibs Generator </h1>
+    <h4> Fill In The Blanks! </h4>
     <FormComponent 
       v-on:createPoem="updateBody"
     />

@@ -1,5 +1,5 @@
 <template>
-    <form v-on:submit.prevent="createPoem">
+    <form v-on:submit="createPoem">
       <div class="form-row">
         <div class="col">
           <input type="text" class="form-control" placeholder="Adjective" v-model="madlib.line_1.adjective">
@@ -95,6 +95,7 @@
         methods: {
             async createPoem() {
                 await PoemService.createPoem(this.madlib);
+                
                 this.$emit('createPoem');
             }
         },

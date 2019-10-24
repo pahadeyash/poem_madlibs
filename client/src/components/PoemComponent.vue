@@ -4,62 +4,82 @@
       <div>
         <form>
         <div class="form-row">
-          <div class="col">
-            <input type="text" class="form-control" v-model="poemObj.text.line_1.adjective">
+          <div class="col-md">
+            <p> Once upon a time, </p>
           </div>
           <div class="col">
-            <input type="text" class="form-control" v-model="poemObj.text.line_1.noun">
+            <input type="text" class="form-control poemObj" v-model="poemObj.text.line_1.adjective">
           </div>
           <div class="col">
-            <input type="text" class="form-control" v-model="poemObj.text.line_1.adverb">
+            <input type="text" class="form-control poemObj" v-model="poemObj.text.line_1.noun">
           </div>
           <div class="col">
-            <input type="text" class="form-control" v-model="poemObj.text.line_1.verb">
+            <input type="text" class="form-control poemObj" v-model="poemObj.text.line_1.adverb">
           </div>
           <div class="col">
-            <input type="text" class="form-control" v-model="poemObj.text.line_1.preposition">
-          </div>
-        </div>
-        <br>
-        <div class="form-row">
-          <div class="col">
-            <input type="text" class="form-control" v-model="poemObj.text.line_2.adjective">
+            <input type="text" class="form-control poemObj" v-model="poemObj.text.line_1.verb">
           </div>
           <div class="col">
-            <input type="text" class="form-control" v-model="poemObj.text.line_2.noun">
+            <input type="text" class="form-control poemObj" v-model="poemObj.text.line_1.preposition">
           </div>
-          <div class="col">
-            <input type="text" class="form-control" v-model="poemObj.text.line_2.adverb">
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" v-model="poemObj.text.line_2.verb">
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" v-model="poemObj.text.line_2.preposition">
+          <div class="col-md">
+            <p> the dock. </p>
           </div>
         </div>
         <br>
         <div class="form-row">
-          <div class="col">
-            <input type="text" class="form-control" v-model="poemObj.text.line_3.adjective">
+          <div class="col-md">
+            <p> Then, </p>
           </div>
           <div class="col">
-            <input type="text" class="form-control" v-model="poemObj.text.line_3.noun">
+            <input type="text" class="form-control poemObj" v-model="poemObj.text.line_2.adjective">
           </div>
           <div class="col">
-            <input type="text" class="form-control" v-model="poemObj.text.line_3.adverb">
+            <input type="text" class="form-control poemObj" v-model="poemObj.text.line_2.noun">
           </div>
           <div class="col">
-            <input type="text" class="form-control" v-model="poemObj.text.line_3.verb">
+            <input type="text" class="form-control poemObj" v-model="poemObj.text.line_2.adverb">
           </div>
           <div class="col">
-            <input type="text" class="form-control" v-model="poemObj.text.line_3.preposition">
+            <input type="text" class="form-control poemObj" v-model="poemObj.text.line_2.verb">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control poemObj" v-model="poemObj.text.line_2.preposition">
+          </div>
+          <div class="col-md">
+            <p> the rock. </p>
+          </div>
+        </div>
+        <br>
+        <div class="form-row">
+         <div class="col-md">
+            <p> Finally, </p>
+          </div>
+          <div class="col">
+            <input type="text" class="form-control poemObj" v-model="poemObj.text.line_3.adjective">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control poemObj" v-model="poemObj.text.line_3.noun">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control poemObj" v-model="poemObj.text.line_3.adverb">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control poemObj" v-model="poemObj.text.line_3.verb">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control poemObj" v-model="poemObj.text.line_3.preposition">
+          </div>
+          <div class="col-md">
+            <p> the block! </p>
           </div>
         </div>
     </form>
     <br>
     </div>
-      <b-button variant="primary" v-on:click="updatePoem"> Update </b-button>
+      <b-button variant="primary" v-on:click="editPoem"> Edit </b-button>
+      <div class="divider"> </div>
+      <b-button variant="success" v-on:click="updatePoem"> Update </b-button>
       <div class="divider"> </div>
       <b-button variant="danger" v-on:click="deletePoem"> Delete </b-button>
     </div>
@@ -80,7 +100,15 @@ export default {
       },
       async updatePoem(){
         await PoemService.updatePoem(this.poemObj);
+        for (var i = 0; i < document.getElementsByClassName("form-control poemObj").length; i++) {
+            document.getElementsByClassName("form-control poemObj")[i].style["pointer-events"] = "none";
+          }
         this.$emit('poemUpdate');
+      },
+      editPoem(){
+        for (var i = 0; i < document.getElementsByClassName("form-control poemObj").length; i++) {
+            document.getElementsByClassName("form-control poemObj")[i].style["pointer-events"] = "auto";
+          }
       }
     }
 }
@@ -113,5 +141,12 @@ p.text {
     height:auto;
     display:inline-block;
 }
+
+.poemObj{
+  border: none;
+  pointer-events: none;
+  font-weight: bold;
+}
+
 
 </style>
