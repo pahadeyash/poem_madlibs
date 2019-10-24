@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     const poems = await loadPoemmsCollection();
     await poems.insertOne({
-        text: req.body.text,
+        text: req.body.poem,
         createdAt: new Date()
     });
     res.status(201).send();
@@ -28,6 +28,14 @@ router.delete('/:id', async (req, res) => {
 
 
 // Update Poems
+router.put('/:id', async(req, res) => {
+    const poems = await loadPoemmsCollection();
+    await poems.findOneAndReplace({_id: new mongodb.ObjectID(req.body.poem._id)}, {
+        text: req.body.poem.text,
+        createdAt: new Date()
+    });
+    res.status(200).send();
+});
 
 
 async function loadPoemmsCollection() {

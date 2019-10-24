@@ -9,7 +9,6 @@ class PoemService{
             try {
                 const res = await axios.get(url);
                 const data = res.data;
-
                 resolve(
                     data.map(poem => ({
                         ...poem,
@@ -35,10 +34,11 @@ class PoemService{
     }
 
     // Edit Poem
-
-    // static editPoem(id) {
-    //     return 
-    // }   
+    static updatePoem(poem) {
+        return axios.put(url+poem._id, {
+            poem
+        });
+    }   
 }
 
 export default PoemService;

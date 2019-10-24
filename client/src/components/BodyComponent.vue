@@ -1,7 +1,9 @@
 <template>
   <div class="container">
     <h1> Fill In! </h1>
-    <FormComponent />
+    <FormComponent 
+      v-on:createPoem="updateBody"
+    />
     <br>
     <br>
     <h1> All Poems </h1>
@@ -13,7 +15,7 @@
           v-bind:poemObj="poem"
           v-bind:index="index"
           v-bind:key="poem._id"
-          v-on:deletePoem="updateBody"
+          v-on:poemUpdate="updateBody"
         />
       </template>
     </div>

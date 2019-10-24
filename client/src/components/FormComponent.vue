@@ -94,7 +94,8 @@
         },
         methods: {
             async createPoem() {
-                this.poems = await PoemService.createPoem(JSON.stringify(this.madlib));
+                await PoemService.createPoem(this.madlib);
+                this.$emit('createPoem');
             }
         },
     }
