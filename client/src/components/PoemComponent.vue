@@ -1,6 +1,7 @@
 <template>
     <div class="post">
-      {{ poemObj.createdAt.getMonth() + '/' + poemObj.createdAt.getDate()  + '/' + poemObj.createdAt.getFullYear()}}
+
+      {{ poemObj.createdAt.getHours() + ':' + poemObj.createdAt.getMinutes() + ' - ' + poemObj.createdAt.getMonth() + '/' + poemObj.createdAt.getDate()  + '/' + poemObj.createdAt.getFullYear()}}
       <div>
         <form>
         <div class="form-row">
@@ -8,19 +9,29 @@
             <p> Once upon a time, </p>
           </div>
           <div class="col">
-            <input type="text" class="form-control poemObj" v-model="poemObj.text.line_1.adjective">
+            <input type="text" class="form-control poemObj" v-model="poem.text.line_1.adjective">
+            <div class="error" v-if="!$v.poem.text.line_1.adjective.required">Adjective required</div>
+            <div class="error" v-if="!$v.poem.text.line_1.adjective.alpha">Letters only</div> 
           </div>
           <div class="col">
-            <input type="text" class="form-control poemObj" v-model="poemObj.text.line_1.noun">
+            <input type="text" class="form-control poemObj" v-model="poem.text.line_1.noun">
+            <div class="error" v-if="!$v.poem.text.line_1.noun.required">Noun required</div>
+            <div class="error" v-if="!$v.poem.text.line_1.noun.alpha">Letters only</div> 
           </div>
           <div class="col">
-            <input type="text" class="form-control poemObj" v-model="poemObj.text.line_1.adverb">
+            <input type="text" class="form-control poemObj" v-model="poem.text.line_1.adverb">
+            <div class="error" v-if="!$v.poem.text.line_1.adverb.required">Adverb required</div>
+            <div class="error" v-if="!$v.poem.text.line_1.adverb.alpha">Letters only</div> 
           </div>
           <div class="col">
-            <input type="text" class="form-control poemObj" v-model="poemObj.text.line_1.verb">
+            <input type="text" class="form-control poemObj" v-model="poem.text.line_1.verb">
+            <div class="error" v-if="!$v.poem.text.line_1.verb.required">Verb required</div>
+            <div class="error" v-if="!$v.poem.text.line_1.verb.alpha">Letters only</div> 
           </div>
           <div class="col">
-            <input type="text" class="form-control poemObj" v-model="poemObj.text.line_1.preposition">
+            <input type="text" class="form-control poemObj" v-model="poem.text.line_1.preposition">
+            <div class="error" v-if="!$v.poem.text.line_1.preposition.required">Preposition required</div>
+            <div class="error" v-if="!$v.poem.text.line_1.preposition.alpha">Letters only</div> 
           </div>
           <div class="col-md">
             <p> the dock. </p>
@@ -32,19 +43,29 @@
             <p> Then, </p>
           </div>
           <div class="col">
-            <input type="text" class="form-control poemObj" v-model="poemObj.text.line_2.adjective">
+            <input type="text" class="form-control poemObj" v-model="poem.text.line_2.adjective">
+            <div class="error" v-if="!$v.poem.text.line_2.adjective.required">Adjective required</div>
+            <div class="error" v-if="!$v.poem.text.line_2.adjective.alpha">Letters only</div> 
           </div>
           <div class="col">
-            <input type="text" class="form-control poemObj" v-model="poemObj.text.line_2.noun">
+            <input type="text" class="form-control poemObj" v-model="poem.text.line_2.noun">
+            <div class="error" v-if="!$v.poem.text.line_2.noun.required">Noun required</div>
+            <div class="error" v-if="!$v.poem.text.line_2.noun.alpha">Letters only</div> 
           </div>
           <div class="col">
-            <input type="text" class="form-control poemObj" v-model="poemObj.text.line_2.adverb">
+            <input type="text" class="form-control poemObj" v-model="poem.text.line_2.adverb">
+            <div class="error" v-if="!$v.poem.text.line_2.adverb.required">Adverb required</div>
+            <div class="error" v-if="!$v.poem.text.line_2.adverb.alpha">Letters only</div> 
           </div>
           <div class="col">
-            <input type="text" class="form-control poemObj" v-model="poemObj.text.line_2.verb">
+            <input type="text" class="form-control poemObj" v-model="poem.text.line_2.verb">
+            <div class="error" v-if="!$v.poem.text.line_2.verb.required">Verb required</div>
+            <div class="error" v-if="!$v.poem.text.line_2.verb.alpha">Letters only</div> 
           </div>
           <div class="col">
-            <input type="text" class="form-control poemObj" v-model="poemObj.text.line_2.preposition">
+            <input type="text" class="form-control poemObj" v-model="poem.text.line_2.preposition">
+            <div class="error" v-if="!$v.poem.text.line_2.preposition.required">Preposition required</div>
+            <div class="error" v-if="!$v.poem.text.line_2.preposition.alpha">Letters only</div> 
           </div>
           <div class="col-md">
             <p> the rock. </p>
@@ -57,18 +78,28 @@
           </div>
           <div class="col">
             <input type="text" class="form-control poemObj" v-model="poemObj.text.line_3.adjective">
+            <div class="error" v-if="!$v.poem.text.line_3.adjective.required">Adjective required</div>
+            <div class="error" v-if="!$v.poem.text.line_3.adjective.alpha">Letters only</div> 
           </div>
           <div class="col">
             <input type="text" class="form-control poemObj" v-model="poemObj.text.line_3.noun">
+            <div class="error" v-if="!$v.poem.text.line_3.noun.required">Noun required</div>
+            <div class="error" v-if="!$v.poem.text.line_3.noun.alpha">Letters only</div> 
           </div>
           <div class="col">
             <input type="text" class="form-control poemObj" v-model="poemObj.text.line_3.adverb">
+            <div class="error" v-if="!$v.poem.text.line_3.adverb.required">Adverb required</div>
+            <div class="error" v-if="!$v.poem.text.line_3.adverb.alpha">Letters only</div> 
           </div>
           <div class="col">
             <input type="text" class="form-control poemObj" v-model="poemObj.text.line_3.verb">
+            <div class="error" v-if="!$v.poem.text.line_3.verb.required">Verb required</div>
+            <div class="error" v-if="!$v.poem.text.line_3.verb.alpha">Letters only</div> 
           </div>
           <div class="col">
             <input type="text" class="form-control poemObj" v-model="poemObj.text.line_3.preposition">
+            <div class="error" v-if="!$v.poem.text.line_3.preposition.required">Preposition required</div>
+            <div class="error" v-if="!$v.poem.text.line_3.preposition.alpha">Letters only</div> 
           </div>
           <div class="col-md">
             <p> the block! </p>
@@ -77,39 +108,129 @@
     </form>
     <br>
     </div>
-      <b-button variant="primary" v-on:click="editPoem"> Edit </b-button>
-      <div class="divider"> </div>
-      <b-button variant="success" v-on:click="updatePoem"> Update </b-button>
-      <div class="divider"> </div>
+      <b-button variant="primary" class="btn btn-primary" :disabled="submitStatus === 'PENDING'" v-on:click="updatePoem"> Update </b-button>
+      <div class="divider"></div>
       <b-button variant="danger" v-on:click="deletePoem"> Delete </b-button>
+      <p v-if="submitStatus === 'OK'">Updated!</p>
+      <p v-if="submitStatus === 'ERROR'">Please fill the poem correctly.</p>
+      <br>
+      <br>
+      <div  v-if="submitStatus=== 'PENDING'" class="spinner-border text-primary" role="status" >
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div v-if="submitStatus=== 'DELETING'" class="spinner-border text-danger" role="status" >
+        <span class="sr-only">Deleting...</span>
+      </div>
     </div>
 </template>
 
 <script>
 import PoemService from '../PoemService'
+import { required, alpha } from 'vuelidate/lib/validators'
 
 export default {
     name: 'PoemComponent',
     props: {
         poemObj: Object,
     },
+    data() {
+      return{
+        poem: this.poemObj,
+        submitStatus: null,
+      }
+    },
+    validations: {
+      poem: {
+        _id: {
+          required
+        },
+        text: {
+          line_1: {
+            adjective: {
+              required,
+              alpha
+            },
+            noun: {
+              required,
+              alpha
+            },
+            adverb: {
+              required,
+              alpha
+            },
+            verb: {
+              required,
+              alpha
+            },
+            preposition: {
+              required,
+              alpha
+            }
+          },
+          line_2: {
+            adjective: {
+              required,
+              alpha
+            },
+            noun: {
+              required,
+              alpha
+            },
+            adverb: {
+              required,
+              alpha
+            },
+            verb: {
+              required,
+              alpha
+            },
+            preposition: {
+              required,
+              alpha
+            }
+          },
+          line_3: {
+            adjective: {
+              required,
+              alpha
+            },
+            noun: {
+              required,
+              alpha
+            },
+            adverb: {
+              required,
+              alpha
+            },
+            verb: {
+              required,
+              alpha
+            },
+            preposition: {
+              required,
+              alpha
+            }
+          }
+        }
+      }
+    },    
     methods: {
       async deletePoem() {
+        this.submitStatus = "DELETING"
         await PoemService.deletePoem(this.poemObj._id);
         this.$emit('poemUpdate');
       },
       async updatePoem(){
-        await PoemService.updatePoem(this.poemObj);
-        for (var i = 0; i < document.getElementsByClassName("form-control poemObj").length; i++) {
-            document.getElementsByClassName("form-control poemObj")[i].style["pointer-events"] = "none";
-          }
-        this.$emit('poemUpdate');
+        this.$v.$touch()
+        if (this.$v.$invalid) {
+          this.submitStatus = 'ERROR'
+        } else {
+          this.submitStatus = 'PENDING'
+          await PoemService.updatePoem(this.poemObj);
+          this.submitStatus = 'OK'
+          this.$emit('poemUpdate');
+        }
       },
-      editPoem(){
-        for (var i = 0; i < document.getElementsByClassName("form-control poemObj").length; i++) {
-            document.getElementsByClassName("form-control poemObj")[i].style["pointer-events"] = "auto";
-          }
-      }
     }
 }
 
@@ -144,7 +265,6 @@ p.text {
 
 .poemObj{
   border: none;
-  pointer-events: none;
   font-weight: bold;
 }
 
