@@ -90,7 +90,6 @@
         <p class="typo__p" v-if="submitStatus === 'OK'">Created!</p>
         <p class="typo__p" v-if="submitStatus === 'ERROR'">Please fill the poem correctly.</p>
         <br>
-        <br>
         <div  v-if="submitStatus=== 'PENDING'" class="spinner-border text-success" role="status" >
           <span class="sr-only">Loading...</span>
         </div>
@@ -137,7 +136,7 @@
             line_1: {
                 adjective: {
                   required,
-                  alpha
+                  alpha,
                 },
                 noun: {
                   required,

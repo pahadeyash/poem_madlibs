@@ -1,7 +1,6 @@
 <template>
     <div class="post">
-
-      {{ poemObj.createdAt.getHours() + ':' + poemObj.createdAt.getMinutes() + ' - ' + poemObj.createdAt.getMonth() + '/' + poemObj.createdAt.getDate()  + '/' + poemObj.createdAt.getFullYear()}}
+      {{poemObj.createdAt.toLocaleDateString("en-US", {hour: "numeric", minute: "numeric", second: "numeric"})}}
       <div>
         <form>
         <div class="form-row">
@@ -9,27 +8,27 @@
             <p> Once upon a time, </p>
           </div>
           <div class="col">
-            <input type="text" class="form-control poemObj" v-model="poem.text.line_1.adjective">
+            <input type="text" class="form-control" v-model="poem.text.line_1.adjective">
             <div class="error" v-if="!$v.poem.text.line_1.adjective.required">Adjective required</div>
             <div class="error" v-if="!$v.poem.text.line_1.adjective.alpha">Letters only</div> 
           </div>
           <div class="col">
-            <input type="text" class="form-control poemObj" v-model="poem.text.line_1.noun">
+            <input type="text" class="form-control" v-model="poem.text.line_1.noun">
             <div class="error" v-if="!$v.poem.text.line_1.noun.required">Noun required</div>
             <div class="error" v-if="!$v.poem.text.line_1.noun.alpha">Letters only</div> 
           </div>
           <div class="col">
-            <input type="text" class="form-control poemObj" v-model="poem.text.line_1.adverb">
+            <input type="text" class="form-control" v-model="poem.text.line_1.adverb">
             <div class="error" v-if="!$v.poem.text.line_1.adverb.required">Adverb required</div>
             <div class="error" v-if="!$v.poem.text.line_1.adverb.alpha">Letters only</div> 
           </div>
           <div class="col">
-            <input type="text" class="form-control poemObj" v-model="poem.text.line_1.verb">
+            <input type="text" class="form-control" v-model="poem.text.line_1.verb">
             <div class="error" v-if="!$v.poem.text.line_1.verb.required">Verb required</div>
             <div class="error" v-if="!$v.poem.text.line_1.verb.alpha">Letters only</div> 
           </div>
           <div class="col">
-            <input type="text" class="form-control poemObj" v-model="poem.text.line_1.preposition">
+            <input type="text" class="form-control" v-model="poem.text.line_1.preposition">
             <div class="error" v-if="!$v.poem.text.line_1.preposition.required">Preposition required</div>
             <div class="error" v-if="!$v.poem.text.line_1.preposition.alpha">Letters only</div> 
           </div>
@@ -43,27 +42,27 @@
             <p> Then, </p>
           </div>
           <div class="col">
-            <input type="text" class="form-control poemObj" v-model="poem.text.line_2.adjective">
+            <input type="text" class="form-control" v-model="poem.text.line_2.adjective">
             <div class="error" v-if="!$v.poem.text.line_2.adjective.required">Adjective required</div>
             <div class="error" v-if="!$v.poem.text.line_2.adjective.alpha">Letters only</div> 
           </div>
           <div class="col">
-            <input type="text" class="form-control poemObj" v-model="poem.text.line_2.noun">
+            <input type="text" class="form-control" v-model="poem.text.line_2.noun">
             <div class="error" v-if="!$v.poem.text.line_2.noun.required">Noun required</div>
             <div class="error" v-if="!$v.poem.text.line_2.noun.alpha">Letters only</div> 
           </div>
           <div class="col">
-            <input type="text" class="form-control poemObj" v-model="poem.text.line_2.adverb">
+            <input type="text" class="form-control" v-model="poem.text.line_2.adverb">
             <div class="error" v-if="!$v.poem.text.line_2.adverb.required">Adverb required</div>
             <div class="error" v-if="!$v.poem.text.line_2.adverb.alpha">Letters only</div> 
           </div>
           <div class="col">
-            <input type="text" class="form-control poemObj" v-model="poem.text.line_2.verb">
+            <input type="text" class="form-control" v-model="poem.text.line_2.verb">
             <div class="error" v-if="!$v.poem.text.line_2.verb.required">Verb required</div>
             <div class="error" v-if="!$v.poem.text.line_2.verb.alpha">Letters only</div> 
           </div>
           <div class="col">
-            <input type="text" class="form-control poemObj" v-model="poem.text.line_2.preposition">
+            <input type="text" class="form-control" v-model="poem.text.line_2.preposition">
             <div class="error" v-if="!$v.poem.text.line_2.preposition.required">Preposition required</div>
             <div class="error" v-if="!$v.poem.text.line_2.preposition.alpha">Letters only</div> 
           </div>
@@ -77,27 +76,27 @@
             <p> Finally, </p>
           </div>
           <div class="col">
-            <input type="text" class="form-control poemObj" v-model="poemObj.text.line_3.adjective">
+            <input type="text" class="form-control" v-model="poemObj.text.line_3.adjective">
             <div class="error" v-if="!$v.poem.text.line_3.adjective.required">Adjective required</div>
             <div class="error" v-if="!$v.poem.text.line_3.adjective.alpha">Letters only</div> 
           </div>
           <div class="col">
-            <input type="text" class="form-control poemObj" v-model="poemObj.text.line_3.noun">
+            <input type="text" class="form-control" v-model="poemObj.text.line_3.noun">
             <div class="error" v-if="!$v.poem.text.line_3.noun.required">Noun required</div>
             <div class="error" v-if="!$v.poem.text.line_3.noun.alpha">Letters only</div> 
           </div>
           <div class="col">
-            <input type="text" class="form-control poemObj" v-model="poemObj.text.line_3.adverb">
+            <input type="text" class="form-control" v-model="poemObj.text.line_3.adverb">
             <div class="error" v-if="!$v.poem.text.line_3.adverb.required">Adverb required</div>
             <div class="error" v-if="!$v.poem.text.line_3.adverb.alpha">Letters only</div> 
           </div>
           <div class="col">
-            <input type="text" class="form-control poemObj" v-model="poemObj.text.line_3.verb">
+            <input type="text" class="form-control" v-model="poemObj.text.line_3.verb">
             <div class="error" v-if="!$v.poem.text.line_3.verb.required">Verb required</div>
             <div class="error" v-if="!$v.poem.text.line_3.verb.alpha">Letters only</div> 
           </div>
           <div class="col">
-            <input type="text" class="form-control poemObj" v-model="poemObj.text.line_3.preposition">
+            <input type="text" class="form-control" v-model="poemObj.text.line_3.preposition">
             <div class="error" v-if="!$v.poem.text.line_3.preposition.required">Preposition required</div>
             <div class="error" v-if="!$v.poem.text.line_3.preposition.alpha">Letters only</div> 
           </div>
@@ -263,7 +262,7 @@ p.text {
     display:inline-block;
 }
 
-.poemObj{
+input{
   border: none;
   font-weight: bold;
 }

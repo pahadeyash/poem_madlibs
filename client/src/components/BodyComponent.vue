@@ -6,11 +6,11 @@
       v-on:createPoem="updateBody"
     />
     <br>
-    <br>
     <h1> All Poems </h1>
     <hr>
     <p class="error" v-if="error"> {{error}} </p>
     <div class="post-container">
+      <h3 v-if="poems.length == 0"> Create some madlibs! </h3>
       <template v-for="(poem, index) in poems">
         <PoemComponent
           v-bind:poemObj="poem"
@@ -38,7 +38,6 @@ export default {
     return {
       poems: [],
       error: '',
-      text: ''
     }
   },
   async created() {
